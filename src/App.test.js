@@ -1,5 +1,27 @@
-import { screen, render } from "@testing-library/react";
+import { screen, render, cleanup } from "@testing-library/react";
 import App from "./App";
+
+// tüm testler çalışmadan önce yapmak istediğimiz işlemleri burada yapıyoruz.
+beforeAll(() => {
+  console.log("beforeAll");
+});
+
+// her testten önce yapmak istediğimiz işlemleri burada yapıyoruz.
+beforeEach(() => {
+  console.log("beforeEach");
+  render(<App />);
+});
+
+// tüm testler çalıştıktan sonra yapmak istediğimiz işlemleri burada yapıyoruz.
+afterAll(() => {
+  console.log("afterAll");
+});
+
+// her testten sonra yapmak istediğimiz işlemleri burada yapıyoruz.
+afterEach(() => {
+  console.log("afterEach");
+  cleanup(); // !artık otomatik olarak gerçekleştiriliyor...
+});
 
 test("my fist test", () => {
   const { debug, container } = render(<App />);
@@ -14,8 +36,6 @@ test("my fist test", () => {
 });
 
 test("header render correctly", () => {
-  render(<App />);
-
   const headerEl = screen.getByText(/testing for react components/i);
   expect(headerEl).toBeInTheDocument();
   expect(headerEl).toHaveTextContent("Testing for React Components");
@@ -24,7 +44,6 @@ test("header render correctly", () => {
 });
 
 test("Darkred Elements Renders Correctly", () => {
-  render(<App />);
   const darkredEl = screen.getByText(/Benim rengim koyu kırmızı!/i);
   expect(darkredEl).toBeInTheDocument();
   expect(darkredEl).toHaveTextContent("Benim rengim koyu kırmızı");
@@ -32,7 +51,6 @@ test("Darkred Elements Renders Correctly", () => {
 });
 
 test("Disabled Button Test", () => {
-  render(<App />);
   //  const buttonEl = screen.getByRole("button", { name: "disabled" });
   const buttonEl = screen.getByTestId("btnDisabled");
   expect(buttonEl).toHaveTextContent("Disabled");
@@ -40,7 +58,6 @@ test("Disabled Button Test", () => {
 });
 
 test("Enabled Button Test", () => {
-  render(<App />);
   //  const buttonEl = screen.getByRole("button", { name: "enabled" });
   const buttonEl = screen.getByTestId("btnEnabled");
   expect(buttonEl).toHaveTextContent("Enable");
