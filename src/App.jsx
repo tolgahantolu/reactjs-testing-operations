@@ -1,4 +1,5 @@
 import React from "react";
+import Counter from "./components/Counter";
 import "./App.css";
 
 const App = () => {
@@ -14,6 +15,8 @@ const App = () => {
       </button>
       <button data-testid="btnEnabled">Enable</button>
       <h3 className="darkred">Benim rengim koyu kırmızı!</h3>
+
+      <Counter />
     </div>
   );
 };
