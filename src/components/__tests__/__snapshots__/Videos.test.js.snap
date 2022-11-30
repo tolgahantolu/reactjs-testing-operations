@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`videos 1 item renders correctly 1`] = `
+<div>
+  <h3>
+    udemy
+  </h3>
+  <h3>
+    youtube
+  </h3>
+  <h3>
+    coursera
+  </h3>
+  <h3>
+    hackerrank
+  </h3>
+</div>
+`;
+
+exports[`videos empty renders 'No videos found!' 1`] = `
+<h1>
+  No videos found!
+</h1>
+`;

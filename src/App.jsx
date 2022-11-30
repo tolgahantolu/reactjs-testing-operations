@@ -1,7 +1,9 @@
 import React from "react";
 import Counter from "./components/Counter";
+import Videos from "./components/Videos";
 import "./App.css";
 
+const videos = ["udemy", "youtube", "coursera", "hackerrank"];
 const App = () => {
   return (
     <div className="App">
@@ -17,6 +19,7 @@ const App = () => {
       <h3 className="darkred">Benim rengim koyu kırmızı!</h3>
 
       <Counter />
+      <Videos videos={videos} />
     </div>
   );
 };
